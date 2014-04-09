@@ -229,6 +229,56 @@ Feature: LMS.Video component
     Then I can download transcript in "srt" format that has text "好 各位同学"
 
   # 18
+  Scenario: Start time works
+    Given I am registered for the course "test_course"
+    And it has a video in "Youtube" mode:
+      | start_time |
+      | 00:00:10   |
+    And I open the section with videos
+    And I click video button "play"
+    Then I see video slider at "10" seconds
+
+  # 19
+  Scenario: End time works
+    Given I am registered for the course "test_course"
+    And it has a video in "Youtube" mode:
+      | end_time  |
+      | 00:00:01  |
+    And I open the section with videos
+    And I click video button "play"
+    And I wait "3" seconds
+    Then I see video slider at "1" seconds
+
+  # 20
+  Scenario: Start time and end time work together
+    Given I am registered for the course "test_course"
+    And it has a video in "Youtube" mode:
+      | start_time | end_time  |
+      | 00:00:10   | 00:00:11  |
+    And I open the section with videos
+    And I click video button "play"
+    Then I see video slider at "10" seconds
+    And I wait "3" seconds
+    Then I see video slider at "11" seconds
+
+  # 21
+  Scenario: After pausing at end time video plays to the end from end time
+    Given I enable capturing of screenshots before and after each step
+    Given I am registered for the course "test_course"
+    And it has a video in "Youtube" mode:
+      | start_time | end_time |
+      | 00:01:51   | 00:01:52 |
+    And I open the section with videos
+    And I click video button "play"
+    And I wait "10" seconds
+    # The end time is 00:01:52, which is 112 seconds.
+    Then I see video slider at "112" seconds
+    And I click video button "play"
+    And I wait "10" seconds
+    # The default video length is 00:01:55, which is 115 seconds.
+    Then I see video slider at "115" seconds
+
+  # 22
   Scenario: Download button works correctly w/o english transcript in Youtube mode of Video component
     Given I am registered for the course "test_course"
     And I have a "chinese_transcripts.srt" transcript file in assets
@@ -238,7 +288,7 @@ Feature: LMS.Video component
     And I see "好 各位同学" text in the captions
     Then I can download transcript in "srt" format that has text "好 各位同学"
 
-  # 19
+  # 23
   Scenario: Verify that each video in each sub-section includes a transcript for non-Youtube countries.
     Given youtube server is up and response time is 2 seconds
     And I am registered for the course "test_course"
@@ -267,7 +317,7 @@ Feature: LMS.Video component
     Then the video has rendered in "HTML5" mode
     And the video does not show the captions
 
-  # 20 Disabled 4/8/14 after intermittent failures in master
+  # 24 Disabled 4/8/14 after intermittent failures in master
   #Scenario: Transcripts are available on different speeds of Flash mode
   #  Given I am registered for the course "test_course"
   #  And I have a "subs_OEoXaMPEzfM.srt.sjson" transcript file in assets
@@ -282,7 +332,7 @@ Feature: LMS.Video component
   #  Then I select the "1.25" speed
   #  And I see "Hi, welcome to Edx." text in the captions
 
-  # 21 Disabled 4/8/14 after intermittent failures in master
+  # 25 Disabled 4/8/14 after intermittent failures in master
   #Scenario: Elapsed time calculates correctly on different speeds of Flash mode
   #  Given I am registered for the course "test_course"
   #  And I have a "subs_OEoXaMPEzfM.srt.sjson" transcript file in assets
