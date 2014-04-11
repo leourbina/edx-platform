@@ -242,24 +242,24 @@ Feature: LMS.Video component
   Scenario: End time works
     Given I am registered for the course "test_course"
     And it has a video in "Youtube" mode:
-      | end_time  |
-      | 00:00:01  |
+      | end_time |
+      | 00:00:02 |
     And I open the section with videos
     And I click video button "play"
-    And I wait "3" seconds
-    Then I see video slider at "1" seconds
+    And I wait "10" seconds
+    Then I see video slider at "2" seconds
 
   # 20
   Scenario: Start time and end time work together
     Given I am registered for the course "test_course"
     And it has a video in "Youtube" mode:
-      | start_time | end_time  |
-      | 00:00:10   | 00:00:11  |
+      | start_time | end_time |
+      | 00:00:10   | 00:00:12 |
     And I open the section with videos
     And I click video button "play"
     Then I see video slider at "10" seconds
-    And I wait "3" seconds
-    Then I see video slider at "11" seconds
+    And I wait "10" seconds
+    Then I see video slider at "12" seconds
 
   # 21
   Scenario: After pausing at end time video plays to the end from end time
