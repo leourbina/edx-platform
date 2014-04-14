@@ -344,8 +344,13 @@ class LocMapperStore(object):
         """
         encoded_location_name = self.encode_key_for_mongo(location.name)
         if encoded_location_name in block_map.keys():
-            del block_map[encoded_location_name]
-            self.location_map.update(location_id, {'$set': {'block_map': block_map}})
+            map_entry = block_map[encoded_location_name]
+            if location.category in map_entry:
+                if len(map_entry) == 1:
+                    del block_map[encoded_location_name]
+                else:
+                    del map_entry[location.category]
+                self.location_map.update(location_id, {'$set': {'block_map': block_map}})
 
     def _interpret_location_course_id(self, course_id, location, lower_only=False):
         """
