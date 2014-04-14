@@ -15,6 +15,13 @@ class VideoFields(object):
         default="Video",
         scope=Scope.settings
     )
+
+    handout = String(
+        display_name="Handout",
+        scope=Scope.settings,
+        help="Handout for the video.",
+    )
+
     saved_video_position = RelativeTime(
         help="Current position in the video",
         scope=Scope.user_state,

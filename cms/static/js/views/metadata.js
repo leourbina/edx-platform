@@ -1,26 +1,29 @@
 define(
     [
         "js/views/baseview", "underscore", "js/models/metadata", "js/views/abstract_editor",
+        "js/models/uploads", "js/views/uploads",
         "js/views/video/transcripts/metadata_videolist",
         "js/views/video/translations_editor"
     ],
-function(BaseView, _, MetadataModel, AbstractEditor, VideoList, VideoTranslations) {
+function(BaseView, _, MetadataModel, AbstractEditor, FileUpload, UploadDialog, VideoList, VideoTranslations) {
     var Metadata = {};
 
     Metadata.Editor = BaseView.extend({
 
         // Model is CMS.Models.MetadataCollection,
         initialize : function() {
+            var self = this,
+                counter = 0,
+                locator = self.$el.closest('[data-locator]').data('locator');
+
             this.template = this.loadTemplate('metadata-editor');
-
             this.$el.html(this.template({numEntries: this.collection.length}));
-            var counter = 0;
 
-            var self = this;
             this.collection.each(
                 function (model) {
                     var data = {
                             el: self.$el.find('.metadata_entry')[counter++],
+                            locator: locator,
                             model: model
                         },
                         conversions = {
@@ -85,7 +88,7 @@ function(BaseView, _, MetadataModel, AbstractEditor, VideoList, VideoTranslation
 
         events : {
             "change input" : "updateModel",
-            "keypress .setting-input" : "showClearButton"  ,
+            "keypress .setting-input" : "showClearButton",
             "click .setting-clear" : "clear"
         },
 
@@ -484,6 +487,49 @@ function(BaseView, _, MetadataModel, AbstractEditor, VideoList, VideoTranslation
             if (_.isNull(this.model.getValue())) {
                 this.$el.find('.create-setting').removeClass('is-disabled');
             }
+        }
+    });
+
+    Metadata.FileUploader = AbstractEditor.extend({
+
+        events : {
+            "click .upload-setting" : "upload",
+            "click .setting-clear" : "clear"
+        },
+
+        templateName: "metadata-file-uploader",
+
+        getValueFromEditor : function () {
+            return this.$el.find('#' + this.uniqueId).val();
+        },
+
+        setValueInEditor : function (value) {
+            this.$el.html(this.template({
+                model: this.model,
+                uniqueId: this.uniqueId
+            }));
+        },
+
+        upload: function (event) {
+            var self = this,
+                target = $(event.currentTarget),
+                url = /assets/ + this.options.locator,
+                model = new FileUpload({
+                    title: gettext('Upload File'),
+                    fileFormats: ['srt', 'pdf']
+                }),
+                view = new UploadDialog({
+                    model: model,
+                    url: url,
+                    parentElement: target.closest('.xblock-editor'),
+                    onSuccess: function (response) {
+                        if (response['asset'] && response['asset']['url']) {
+                            self.model.setValue(response['asset']['url']);
+                        }
+                    }
+                }).show();
+
+            event.preventDefault();
         }
     });
 

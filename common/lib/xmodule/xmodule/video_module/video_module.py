@@ -248,6 +248,8 @@ class VideoDescriptor(VideoFields, VideoStudioViewHandlers, TabsEditingDescripto
         editable_fields['transcripts']['languages'] = languages
         editable_fields['transcripts']['type'] = 'VideoTranslations'
         editable_fields['transcripts']['urlRoot'] = self.runtime.handler_url(self, 'studio_transcript', 'translation').rstrip('/?')
+        editable_fields['handout']['type'] = 'FileUploader'
+
         return editable_fields
 
     @classmethod
