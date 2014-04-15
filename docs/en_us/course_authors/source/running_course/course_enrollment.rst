@@ -41,8 +41,7 @@ have registered and activated user accounts can enroll themselves in
 For a more detailed description of this process from a student's point of
 view, see :ref:`Sample Student Login Guide`.
 
-Course authors and instructors can enroll students in a course either before
-or after the students register their user accounts.
+Course authors and instructors, however, can enroll students in a course either before or after the students register their user accounts.
 
 To work on a course, all course staff members must also have registered and
 activated user accounts and be enrolled in the course.
@@ -69,17 +68,13 @@ When you enroll people in a course you have these options:
 
 * **Notify students by email**. When you choose this option, an email message
   is automatically sent to each of the email addresses that you supply. The
-  message includes the name of the course, a link to the registration page,
-  and a reminder to use that same email address to register. Whether you
-  choose to send a notification or not, enrolled students see your course on
-  their dashboards when they log in.
+  message includes the name of the course and a reminder to use that same email address to register. Whether you choose to send a notification or not, enrolled students see your course on their dashboards when they log in.
 
   An example of the email message that enrollees receive when you select this
   option follows.
 
   .. image:: ../Images/Course_Enrollment_Email.png
         :alt: Email message inviting a student to enroll in the EdX 101 course
-        :width: 800
 
 To enroll students or staff members:
 
