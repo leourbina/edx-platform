@@ -84,8 +84,13 @@ from util.password_policy_validators import (
     validate_password_dictionary
 )
 
+import analytics
+
 log = logging.getLogger("edx.student")
 AUDIT_LOG = logging.getLogger("audit")
+
+# By default, flushes the first time a message is received and every 20 messages thereafter
+analytics.init(settings.SEGMENT_IO_LMS_KEY)
 
 Article = namedtuple('Article', 'title url author image deck publication publish_date')
 ReverifyInfo = namedtuple('ReverifyInfo', 'course_id course_name course_number date status display')  # pylint: disable=C0103
@@ -1168,6 +1173,11 @@ def create_account(request, post_override=None):
 
     dog_stats_api.increment("common.student.account_created")
     create_comments_service_user(user)
+
+    analytics.track(user.id, "Created a New Account", {
+        'email': user.email,
+        'username': user.username
+    })
 
     context = {
         'name': post_vars['name'],
