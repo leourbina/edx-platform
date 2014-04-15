@@ -20,6 +20,20 @@ class LoginPage(PageObject):
             for title in self.q(css='span.title-super').text
         ])
 
+
+    def wait_for_ajax(self):
+        """ Make sure that all ajax requests are finished.
+        """
+        def _is_ajax_finished():
+            """
+            Check if all the ajax call on current page completed.
+            :return:
+            """
+            return self.browser.execute_script("return jQuery.active") == 0
+
+        EmptyPromise(_is_ajax_finished, "Finished waiting for ajax requests.").fulfill()
+
+
     def login(self, email, password):
         """
         Attempt to log in using `email` and `password`.
@@ -30,23 +44,10 @@ class LoginPage(PageObject):
 
         self.q(css='input#email').fill(email)
         self.q(css='input#password').fill(password)
+        self.wait_for_ajax()
         self.q(css='button#submit').click()
 
         EmptyPromise(
-            lambda: "login" not in self.browser.url,
+            lambda: "login" not in self.browser.current_url,
             "redirected from the login page"
         )
-
-"""
-        # Ensure that we make it to another page
-        on_next_page = EmptyPromise(
-            lambda: "login" not in self.browser.url,
-            "redirected from the login page"
-        )
-
-        with fulfill_after(on_next_page):
-            self.css_fill('input#email', email)
-            self.css_fill('input#password', password)
-            self.css_click('button#submit')
-
-"""

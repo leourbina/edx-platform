@@ -1,7 +1,7 @@
 """
 Student progress page
 """
-
+from bok_choy.promise import Promise
 from .course_page import CoursePage
 
 
@@ -12,12 +12,18 @@ class ProgressPage(CoursePage):
 
     url_path = "progress"
 
-    #@property
     def is_browser_on_page(self):
-        has_course_info = self.q(css='div.course-info').present
-        has_graph = self.q(css='div#grade-detail-graph').present
-        return has_course_info and has_graph
+        def _is_correct_page():
+            is_present = (
+                self.q(css='div.course-info').present and
+                self.q(css='div#grade-detail-graph').present
+            )
+            print "is_present: {}".format(is_present)
+            return is_present, is_present
 
+        return Promise(_is_correct_page, 'On progress page.').fulfill()
+
+    @property
     def scores(self, chapter, section):
         """
         Return a list of (points, max_points) tuples representing the scores
