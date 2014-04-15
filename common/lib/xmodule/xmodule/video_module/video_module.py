@@ -143,6 +143,7 @@ class VideoModule(VideoFields, VideoStudentViewHandlers, XModule):
             'data_dir': getattr(self, 'data_dir', None),
             'display_name': self.display_name_with_default,
             'end': self.end_time.total_seconds(),
+            'handout': self.handout,
             'id': self.location.html_id(),
             'show_captions': json.dumps(self.show_captions),
             'sources': sources,
