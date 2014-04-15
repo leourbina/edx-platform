@@ -1,4 +1,9 @@
-(function ($, undefined) {
+(function (
+    $, _, jasmine, spyOn, readFixtures, beforeEach, imagediff, loadFixtures,
+    Video
+) {
+    'use strict';
+
     var stubbedYT = {
         Player: function () {
             var Player = jasmine.createSpyObj(
@@ -68,7 +73,7 @@
     };
 
     // Time waitsFor() should wait for before failing a test.
-    window.WAIT_TIMEOUT = 5000;
+    jasmine.WAIT_TIMEOUT = 5000;
 
     jasmine.getFixtures().fixturesPath += 'fixtures';
 
@@ -150,7 +155,7 @@
                 }
             } else if (settings.url.match(/transcript\/translation\/.+$/)) {
                 return settings.success(jasmine.stubbedCaption);
-            } else if (settings.url == '/transcript/available_translations') {
+            } else if (settings.url === '/transcript/available_translations') {
                 return settings.success(['uk', 'de']);
             } else if (settings.url.match(/.+\/problem_get$/)) {
                 return settings.success({
@@ -163,13 +168,15 @@
                 settings.url.match(/.+\/problem_(check|reset|show|save)$/)
             ) {
                 // Do nothing.
-            } else if (settings.url == '/save_user_state') {
+                return;
+            } else if (settings.url === '/save_user_state') {
                 return {success: true};
             } else if (settings.url === 'http://www.youtube.com/iframe_api') {
                 // Stub YouTube API.
                 window.YT = stubbedYT;
 
-                // Call the callback that must be called when YouTube API is loaded. By specification.
+                // Call the callback that must be called when YouTube API is
+                // loaded. By specification.
                 window.onYouTubeIframeAPIReady();
 
                 return {success: true};
@@ -279,4 +286,9 @@
         // "video.html" contains HTML template for a YouTube video.
         return jasmine.initializePlayer('video.html', params);
     };
-}).call(this, window.jQuery);
+}).call(
+    this,
+
+    window.jQuery, window._, window.jasmine, window.spyOn, window.readFixtures,
+    window.beforeEach, window.imagediff, window.loadFixtures, window.Video
+);
