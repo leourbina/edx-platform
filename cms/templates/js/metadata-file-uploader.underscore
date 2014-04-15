@@ -1,11 +1,7 @@
 <div class="wrapper-comp-setting file-uploader">
   <label class="label setting-label"><%= model.get('display_name') %></label>
   <input type="hidden" id="<%= uniqueId %>" class="input" value="<%= model.get("value") %>">
-  <div class="wrapper-uploader-actions"
-    ><a href="#" class="upload-action upload-setting"><%= model.get('value') ? gettext('Replace') : gettext('Update') %>
-    </a><% if (model.get('value')) { %><a href="<%= model.get("value") %>" class="download-action download-setting"><%= gettext("Download") %>
-    </a><% } %>
-  </div>
+  <div class="wrapper-uploader-actions"></div>
   <button class="action setting-clear inactive" type="button" name="setting-clear" value="<%= gettext("Clear") %>" data-tooltip="<%= gettext("Clear") %>">
         <i class="icon-undo"></i><span class="sr">"<%= gettext("Clear Value") %>"</span>
     </button>

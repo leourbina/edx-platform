@@ -498,16 +498,25 @@ function(BaseView, _, MetadataModel, AbstractEditor, FileUpload, UploadDialog, V
         },
 
         templateName: "metadata-file-uploader",
+        templateButtonsName: "metadata-file-uploader-item",
+
+        initialize: function () {
+            this.buttonTemplate = this.loadTemplate(this.templateButtonsName);
+            AbstractEditor.prototype.initialize.apply(this);
+        },
 
         getValueFromEditor : function () {
-            return this.$el.find('#' + this.uniqueId).val();
+            return this.$('#' + this.uniqueId).val();
         },
 
         setValueInEditor : function (value) {
-            this.$el.html(this.template({
+            var html = this.buttonTemplate({
                 model: this.model,
                 uniqueId: this.uniqueId
-            }));
+            });
+
+            this.$('#' + this.uniqueId).val(value);
+            this.$('.wrapper-uploader-actions').html(html);
         },
 
         upload: function (event) {
@@ -516,7 +525,6 @@ function(BaseView, _, MetadataModel, AbstractEditor, FileUpload, UploadDialog, V
                 url = /assets/ + this.options.locator,
                 model = new FileUpload({
                     title: gettext('Upload File'),
-                    fileFormats: ['srt', 'pdf']
                 }),
                 view = new UploadDialog({
                     model: model,
