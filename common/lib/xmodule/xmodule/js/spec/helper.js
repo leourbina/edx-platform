@@ -73,7 +73,7 @@
     };
 
     // Time waitsFor() should wait for before failing a test.
-    jasmine.WAIT_TIMEOUT = 5000;
+    window.WAIT_TIMEOUT = 5000;
 
     jasmine.getFixtures().fixturesPath += 'fixtures';
 

@@ -1,6 +1,6 @@
 (function (
     jasmine, describe, it, beforeEach, afterEach, expect, runs, waitsFor, spyOn,
-    spyOnEvent, $, _
+    spyOnEvent, $, _, WAIT_TIMEOUT
 ) {
     'use strict';
 
@@ -129,7 +129,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -164,7 +164,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -199,7 +199,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -234,7 +234,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -269,7 +269,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -305,7 +305,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -340,7 +340,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -375,7 +375,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -410,7 +410,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -445,7 +445,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -481,7 +481,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -516,7 +516,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -552,7 +552,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -588,7 +588,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -624,7 +624,7 @@
 
                     return isFinite(duration) && duration > 0 &&
                         isFinite(state.videoPlayer.startTime);
-                }, 'duration is set', jasmine.WAIT_TIMEOUT);
+                }, 'duration is set', WAIT_TIMEOUT);
 
                 runs(function () {
                     expect($('.video-controls').find('.vidtime'))
@@ -864,5 +864,5 @@
 
     window.jasmine, window.describe, window.it, window.beforeEach,
     window.afterEach, window.expect, window.runs, window.waitsFor,
-    window.spyOn, window.spyOnEvent, window.$, window._
+    window.spyOn, window.spyOnEvent, window.$, window._, window.WAIT_TIMEOUT
 );
