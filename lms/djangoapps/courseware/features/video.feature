@@ -338,88 +338,6 @@ Feature: LMS.Video component
     Then I see video slider at "1:55" position
 
   # 27
-  Scenario: Start time works for HTML5 video
-    Given I am registered for the course "test_course"
-    And it has a video in "HTML5" mode:
-      | start_time |
-      | 00:00:10   |
-    And I click video button "play"
-    Then I see video slider at "0:10" position
-
-  # 28
-  Scenario: End time works for HTML5 video
-    Given I am registered for the course "test_course"
-    And it has a video in "HTML5" mode:
-      | end_time |
-      | 00:00:02 |
-    And I click video button "play"
-    And I wait "5" seconds
-    Then I see video slider at "0:02" position
-
-  # 29
-  Scenario: HTML5 video with end-time at 1:00 and the video starts playing at 0:58
-    Given I am registered for the course "test_course"
-    And it has a video in "HTML5" mode:
-      | end_time |
-      | 00:01:00 |
-    And I wait for video controls appear
-    And I seek video to "0:58" position
-    And I click video button "play"
-    And I wait "5" seconds
-    Then I see video slider at "1:00" position
-
-  # 30
-  Scenario: Start time and end time work together for HTML5 video
-    Given I am registered for the course "test_course"
-    And it has a video in "HTML5" mode:
-      | start_time | end_time |
-      | 00:00:10   | 00:00:12 |
-    And I click video button "play"
-    Then I see video slider at "0:10" position
-    And I wait "5" seconds
-    Then I see video slider at "0:12" position
-
-  # 31
-  Scenario: HTML5 video after pausing at end time video plays to the end from end time
-    Given I am registered for the course "test_course"
-    And it has a video in "HTML5" mode:
-      | start_time | end_time |
-      | 00:01:51   | 00:01:52 |
-    And I click video button "play"
-    And I wait "5" seconds
-    # The end time is 00:01:52, which is 112 seconds.
-    Then I see video slider at "1:52" position
-    And I click video button "play"
-    And I wait "8" seconds
-    # The default video length is 00:01:55, which is 115 seconds.
-    Then I see video slider at "1:54" position
-
-  # 32
-  Scenario: HTML5 video with end-time at 0:32 and start-time at 0:30, the video starts playing from 0:28
-    Given I am registered for the course "test_course"
-    And it has a video in "HTML5" mode:
-      | start_time | end_time |
-      | 00:00:30   | 00:00:32 |
-    And I wait for video controls appear
-    And I seek video to "0:28" position
-    And I click video button "play"
-    And I wait "8" seconds
-    Then I see video slider at "0:32" position
-
-  # 33
-  Scenario: HTML5 video with end-time at 1:00, the video starts playing from 1:52
-    Given I am registered for the course "test_course"
-    And it has a video in "HTML5" mode:
-      | end_time |
-      | 00:01:00 |
-    And I wait for video controls appear
-    And I seek video to "1:52" position
-    And I click video button "play"
-    And I wait "4" seconds
-    # Video stops at the end.
-    Then I see video slider at "1:54" position
-
-  # 34
   @skip_firefox
   Scenario: Quality button appears on play
     Given the course has a Video component in "Youtube" mode
@@ -427,7 +345,7 @@ Feature: LMS.Video component
     And I click video button "play"
     Then I see video button "quality" is visible
 
-  # 35
+  # 28
   @skip_firefox
   Scenario: Quality button works correctly
     Given the course has a Video component in "Youtube" mode
@@ -435,6 +353,88 @@ Feature: LMS.Video component
     And I see video button "quality" is inactive
     And I click video button "quality"
     Then I see video button "quality" is active
+
+  # 27
+  # Scenario: Start time works for HTML5 video
+  #   Given I am registered for the course "test_course"
+  #   And it has a video in "HTML5" mode:
+  #     | start_time |
+  #     | 00:00:10   |
+  #   And I click video button "play"
+  #   Then I see video slider at "0:10" position
+
+  # 28
+  # Scenario: End time works for HTML5 video
+  #   Given I am registered for the course "test_course"
+  #   And it has a video in "HTML5" mode:
+  #     | end_time |
+  #     | 00:00:02 |
+  #   And I click video button "play"
+  #   And I wait "5" seconds
+  #   Then I see video slider at "0:02" position
+
+  # 29
+  # Scenario: HTML5 video with end-time at 1:00 and the video starts playing at 0:58
+  #   Given I am registered for the course "test_course"
+  #   And it has a video in "HTML5" mode:
+  #     | end_time |
+  #     | 00:01:00 |
+  #   And I wait for video controls appear
+  #   And I seek video to "0:58" position
+  #   And I click video button "play"
+  #   And I wait "5" seconds
+  #   Then I see video slider at "1:00" position
+
+  # 30
+  # Scenario: Start time and end time work together for HTML5 video
+  #   Given I am registered for the course "test_course"
+  #   And it has a video in "HTML5" mode:
+  #     | start_time | end_time |
+  #     | 00:00:10   | 00:00:12 |
+  #   And I click video button "play"
+  #   Then I see video slider at "0:10" position
+  #   And I wait "5" seconds
+  #   Then I see video slider at "0:12" position
+
+  # 31
+  # Scenario: HTML5 video after pausing at end time video plays to the end from end time
+  #   Given I am registered for the course "test_course"
+  #   And it has a video in "HTML5" mode:
+  #     | start_time | end_time |
+  #     | 00:01:51   | 00:01:52 |
+  #   And I click video button "play"
+  #   And I wait "5" seconds
+    # The end time is 00:01:52, which is 112 seconds.
+  #   Then I see video slider at "1:52" position
+  #   And I click video button "play"
+  #   And I wait "8" seconds
+    # The default video length is 00:01:55, which is 115 seconds.
+  #   Then I see video slider at "1:54" position
+
+  # 32
+  # Scenario: HTML5 video with end-time at 0:32 and start-time at 0:30, the video starts playing from 0:28
+  #   Given I am registered for the course "test_course"
+  #   And it has a video in "HTML5" mode:
+  #     | start_time | end_time |
+  #     | 00:00:30   | 00:00:32 |
+  #   And I wait for video controls appear
+  #   And I seek video to "0:28" position
+  #   And I click video button "play"
+  #   And I wait "8" seconds
+  #   Then I see video slider at "0:32" position
+
+  # 33
+  # Scenario: HTML5 video with end-time at 1:00, the video starts playing from 1:52
+  #   Given I am registered for the course "test_course"
+  #   And it has a video in "HTML5" mode:
+  #     | end_time |
+  # #     | 00:01:00 |
+  #   And I wait for video controls appear
+  #   And I click video button "play"
+  #   And I seek video to "1:52" position
+  #   And I wait "5" seconds
+    # Video stops at the end.
+  #   Then I see video slider at "1:54" position
 
   # 36 Disabled 4/8/14 after intermittent failures in master
   #Scenario: Transcripts are available on different speeds of Flash mode

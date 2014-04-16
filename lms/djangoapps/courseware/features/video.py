@@ -21,9 +21,9 @@ VIDEO_SOURCE_PORT = settings.VIDEO_SOURCE_PORT
 ############### ACTIONS ####################
 
 HTML5_SOURCES = [
-    'http://localhost:{0}/gizmo.mp4'.format(VIDEO_SOURCE_PORT),
-    'http://localhost:{0}/gizmo.webm'.format(VIDEO_SOURCE_PORT),
-    'http://localhost:{0}/gizmo.ogv'.format(VIDEO_SOURCE_PORT),
+    'http://localhost:{0}/edX-FA12-cware-1_100.mp4'.format(VIDEO_SOURCE_PORT),
+    'http://localhost:{0}/edX-FA12-cware-1_100.webm'.format(VIDEO_SOURCE_PORT),
+    'http://localhost:{0}/edX-FA12-cware-1_100.ogv'.format(VIDEO_SOURCE_PORT),
 ]
 
 FLASH_SOURCES = {
@@ -34,7 +34,7 @@ FLASH_SOURCES = {
 }
 
 HTML5_SOURCES_INCORRECT = [
-    'http://localhost:{0}/gizmo.mp99'.format(VIDEO_SOURCE_PORT),
+    'http://localhost:{0}/edX-FA12-cware-1_100.mp99'.format(VIDEO_SOURCE_PORT),
 ]
 
 VIDEO_BUTTONS = {
