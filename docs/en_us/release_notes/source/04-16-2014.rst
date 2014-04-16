@@ -26,13 +26,13 @@ The following documentation is available:
 
   Recent changes include: 
 
-  * Updates to `Testing Your Course <http://edx.readthedocs.org/projects/ca/en/latest/releasing_course/view_course_content.html#testing-your-course>`_ to include a section on how to `Switch Between Studio and Your Live Course <http://edx.readthedocs.org/projects/ca/en/latest/releasing_course/view_course_content.html#view-your-live-course>`_.
-
   * In support of new features, added the following sections to `Multiple Choice <http://edx.readthedocs.org/projects/ca/en/latest/problems_tools/common_problems.html#multiple-choice>`_ problems:
     
     * `Shuffle Answers in a Multiple Choice Problem <http://edx.readthedocs.org/projects/ca/en/latest/problems_tools/common_problems.html#shuffle-answers-in-a-multiple-choice-problem>`_
     * `Targeted Feedback in a Multiple Choice Problem <http://edx.readthedocs.org/projects/ca/en/latest/problems_tools/common_problems.html#targeted-feedback-in-a-multiple-choice-problem>`_
     * `Answer Pools in a Multiple Choice Problem <http://edx.readthedocs.org/projects/ca/en/latest/problems_tools/common_problems.html#answer-pools-in-a-multiple-choice-problem>`_
+      
+  * Expanded the `Grade and Answer Data <http://edx.readthedocs.org/projects/ca/en/latest/running_course/course_grades.html#grades>`_ section to include a topic on interpreting the Student Answer Distribution report.
 
 * `edX Data Documentation
   <http://edx.readthedocs.org/projects/devdata/en/latest/>`_
@@ -68,9 +68,9 @@ edX Studio
 edX Learning Management System
 ***************************************
 
-* When you sent an enrollment email through the Beta Instructor Dashboard to an
-  email address that was not registered at edx.org, the registration link in the
-  email message was broken. This problem is resolved. (LMS-2217)
+* When you enrolled students in a course on edx.org and sent a notification
+  email message, the message included an invalid link to the course. This
+  problem is now resolved. (LMS-2217)
 
 * The video player now only shows the HD button when an HD video option is
   available. (BLD-937)
@@ -81,10 +81,3 @@ Accessibility Improvements
 
 * The PDF viewer used for textbooks was updated and is now accessible to screen
   readers. (LMS-2276)
-
-*************
-Discussions
-*************
-
-* The Instructor Dashboard is updated so that you can move students between
-  cohorts. (FOR-542)
