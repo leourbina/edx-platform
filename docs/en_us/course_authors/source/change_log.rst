@@ -10,6 +10,8 @@ Change Log
 
    * - Date
      - Change  
+   * - 4/16/14
+     - Updated "Transcripts in Additional Languages" in :ref:`Working with Video Components`
    * - 4/7/14
      - Expanded the :ref:`Course Data`, :ref:`Enrollment`, and :ref:`Course_Staffing` sections.
    * - 04/03/14
