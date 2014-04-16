@@ -1,0 +1,53 @@
+###################################
+April 16, 2014
+###################################
+
+The following information reflects what is new in the edX Platform as of April
+16, 2014.  See previous pages in this document for a history of changes.
+
+**************************
+edX Documentation
+**************************
+
+You can now access the `edX Status <http://status.edx.org/>`_ page to get an up-to-date status for all services on edx.org and edX Edge. The page also includes the Twitter feed for @edXstatus, which the edX Operations team uses to post updates.
+
+You can access the public edX `roadmap <https://edx-
+wiki.atlassian.net/wiki/display/OPENPROD/Open+EdX+Public+Product+Roadmap>`_ for
+details about the currently planned product direction.
+
+The following documentation is available:
+
+* `Building and Running an edX Course.
+  <http://edx.readthedocs.org/projects/ca/en/latest/>`_ You can also download
+  the guide as a PDF from the edX Studio user interface.
+
+  Recent changes include: 
+
+  * Updates to `Testing Your Course <http://edx.readthedocs.org/projects/ca/en/latest/releasing_course/view_course_content.html#testing-your-course>`_ to include a section on how to `Switch Between Studio and Your Live Course <http://edx.readthedocs.org/projects/ca/en/latest/releasing_course/view_course_content.html#view-your-live-course>`_.
+
+
+* `edX Platform Developer Documentation
+  <http://edx.readthedocs.org/projects/devdata/en/latest/>`_
+
+
+*************
+edX Studio
+*************
+
+* When you import a large course, your browser may time out while the course is being imported.  In this situation, the following message is now displayed on the Import page: *Your browser has timed out but the server is still processing your import. Please wait 5 min and verify that the new content has appeared*. (STUD-1283)
+
+* In Studio, the Discussion component is updated with the following text: *To view live discussions, click Preview or View Live in Unit Settings*. (FOR-429)
+
+***************************************
+edX Learning Management System
+***************************************
+
+* When you sent an enrollment email through the Beta Instructor Dashboard to an email address that was not registered at edx.org, the registration link in the email message was broken. This problem is resolved. (LMS-2217)
+
+* The video player now only shows the HD button when an HD video option is available. (BLD-937)
+
+*************
+Discussions
+*************
+
+* The Instructor Dashboard is updated so that you can move students between cohorts. (FOR-542)
