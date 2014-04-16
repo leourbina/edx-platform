@@ -497,7 +497,7 @@ function(BaseView, _, MetadataModel, AbstractEditor, FileUpload, UploadDialog, V
             "click .setting-clear" : "clear"
         },
 
-        templateName: "metadata-file-uploader",
+        templateName: "metadata-file-uploader-entry",
         templateButtonsName: "metadata-file-uploader-item",
 
         initialize: function () {
@@ -505,11 +505,11 @@ function(BaseView, _, MetadataModel, AbstractEditor, FileUpload, UploadDialog, V
             AbstractEditor.prototype.initialize.apply(this);
         },
 
-        getValueFromEditor : function () {
+        getValueFromEditor: function () {
             return this.$('#' + this.uniqueId).val();
         },
 
-        setValueInEditor : function (value) {
+        setValueInEditor: function (value) {
             var html = this.buttonTemplate({
                 model: this.model,
                 uniqueId: this.uniqueId
